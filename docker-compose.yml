@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+    webhook:
+        build: .
+        restart: unless-stoped
+        ports:
+            - 41523:41523
+
+    db:
+        image: redis:alpine
+        restart: unless-stoped
+        volumes:
+            - ./redis-data:/var/lib/redis

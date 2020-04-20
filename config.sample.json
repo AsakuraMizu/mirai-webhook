@@ -1,0 +1,21 @@
+{
+    "mirai": {
+        "api_root": "http://localhost:8080/",
+        "auth_key": "mirai-api-http",
+        "qq": 10000
+    },
+    "app": {
+        "use_reloader": false,
+        "port": 41523
+    },
+    "redis": "redis://localhost",
+    "github": {
+        "mamoe/mirai": [
+            233333333
+        ],
+        "water-lift/mirai-webhook": [
+            123456789,
+            987654321
+        ]
+    }
+}
