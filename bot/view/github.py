@@ -34,7 +34,7 @@ async def _():
 
     if event_type in EVENT_DESCRIPTIONS.keys():
         res = EVENT_DESCRIPTIONS[event_type].format(**data)
-    elif type == 'star':
+    elif event_type == 'star':
         if not data['action'] == 'created':
             return '', 204
         try:
@@ -53,7 +53,7 @@ async def _():
         finally:
             redis.close()
             await redis.wait_closed()
-    elif type == 'push':
+    elif event_type == 'push':
         res = '{pusher[name]} pushed to {repository[full_name]}:{ref}'.format(**data)
         for commit in data['commits']:
             det = []

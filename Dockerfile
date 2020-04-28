@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-CMD pipenv run start
+CMD python -m bot

@@ -4,12 +4,12 @@ services:
 
     webhook:
         build: .
-        restart: unless-stoped
+        restart: unless-stopped
         ports:
             - 41523:41523
 
     db:
         image: redis:alpine
-        restart: unless-stoped
+        restart: unless-stopped
         volumes:
             - ./redis-data:/var/lib/redis
