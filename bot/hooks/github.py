@@ -72,7 +72,7 @@ async def _():
             coros = []
             for group in conf['github'][data['repository']['full_name']]:
                 coros.append(api.send_group_message(target=group, message_chain=MessageChain(res)))
-            asyncio.create_task(asyncio.gather(*coros))
+            await asyncio.gather(*coros)
         return 'Pushed to {} group(s).'.format(len(conf['github'][data['repository']['full_name']]))
 
 

@@ -11,4 +11,4 @@ with open('config.json') as f:
 
 app = Quart(__name__)
 
-from . import github
+import bot.hooks
