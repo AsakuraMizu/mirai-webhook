@@ -1,10 +1,10 @@
 import asyncio
 
-from aiomirai import MessageChain
+from aiomirai import MessageChain, SessionApi
 from aioredis import create_redis_pool
 from quart import abort, request
 
-from bot import api, app, conf
+from bot import app, conf
 
 try:
     import ujson as json
@@ -68,10 +68,11 @@ async def _():
     else:
         return '', 204
     if res and conf['github'][data['repository']['full_name']]:
-        coros = []
-        for group in conf['github'][data['repository']['full_name']]:
-            coros.append(api.send_group_message(target=group, message_chain=MessageChain(res)))
-        await asyncio.gather(*coros)
+        async with SessionApi(**conf['mirai']) as api:
+            coros = []
+            for group in conf['github'][data['repository']['full_name']]:
+                coros.append(api.send_group_message(target=group, message_chain=MessageChain(res)))
+            asyncio.create_task(asyncio.gather(*coros))
         return 'Pushed to {} group(s).'.format(len(conf['github'][data['repository']['full_name']]))
 
 
