@@ -67,7 +67,7 @@ async def _():
                 .format(commit['id'][:6], commit['message'].replace('\n', ' '), ''.join(det))
     else:
         return '', 204
-    if res and conf['github'][data['repository']['full_name']]:
+    if res and data['repository']['full_name'] in conf['github']:
         async with SessionApi(**conf['mirai']) as api:
             coros = []
             for group in conf['github'][data['repository']['full_name']]:
