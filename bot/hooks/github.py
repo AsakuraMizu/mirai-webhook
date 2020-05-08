@@ -102,7 +102,7 @@ EVENT_DESCRIPTIONS = {
     'page_build':
     '{sender[login]} built pages in {repository[full_name]}',
     'ping':
-    'ping from {sender[login]}',
+    'ping from {sender[login]}: {zen}',
     'public':
     '{sender[login]} publicized {repository[full_name]}',
     'pull_request':
