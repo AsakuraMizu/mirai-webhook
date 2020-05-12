@@ -10,11 +10,12 @@
         "port": 41523
     },
     "redis": "redis://localhost",
+    "less": false,
     "github": {
         "mamoe/mirai": [
             233333333
         ],
-        "water-lift/mirai-webhook": [
+        "AsakuraMizu/mirai-webhook": [
             123456789,
             987654321
         ]

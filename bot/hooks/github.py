@@ -32,8 +32,13 @@ async def _():
     if data is None:
         abort(400, 'Where is your data :(')
 
-    if event_type in EVENT_DESCRIPTIONS.keys():
-        res = EVENT_DESCRIPTIONS[event_type].format(**data)
+    if conf.get('less', False):
+        EVENTS = LESS_EVENT_DESCRIPTIONS
+    else:
+        EVENTS = EVENT_DESCRIPTIONS
+
+    if event_type in EVENTS.keys():
+        res = EVENTS[event_type].format(**data)
     elif event_type == 'star':
         if not data['action'] == 'created':
             return '', 204
@@ -119,4 +124,29 @@ EVENT_DESCRIPTIONS = {
     '{sender[login]} set {sha} status to {state} in {repository[full_name]}',
     'team_add':
     '{sender[login]} added repository {repository[full_name]} to team {team[name]}',
+}
+
+LESS_EVENT_DESCRIPTIONS = {
+    'commit_comment':
+    '{comment[user][login]} commented on {comment[commit_id]} in {repository[full_name]}',
+    'fork':
+    '{forkee[owner][login]} forked {forkee[name]}',
+    'gollum':
+    '{sender[login]} edited wiki pages in {repository[full_name]}',
+    'issue_comment':
+    '{sender[login]} commented on issue #{issue[number]} in {repository[full_name]}',
+    'issues':
+    '{sender[login]} {action} issue #{issue[number]} in {repository[full_name]}',
+    'ping':
+    'ping from {sender[login]}: {zen}',
+    'public':
+    '{sender[login]} publicized {repository[full_name]}',
+    'pull_request':
+    '{sender[login]} {action} pull #{pull_request[number]} in {repository[full_name]}',
+    'pull_request_review':
+    '{sender[login]} {action} {review[state]} review on pull #{pull_request[number]} in {repository[full_name]}',
+    'pull_request_review_comment':
+    '{comment[user][login]} {action} comment on pull #{pull_request[number]} in {repository[full_name]}',
+    'release':
+    '{release[author][login]} {action} {release[tag_name]} in {repository[full_name]}',
 }
