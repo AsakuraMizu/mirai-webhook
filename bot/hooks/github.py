@@ -86,7 +86,7 @@ EVENT_DESCRIPTIONS = {
     'deployment':
     '{sender[login]} deployed {deployment[ref]} to {deployment[environment]} in {repository[full_name]}',
     'deployment_status':
-    'deployment of {deployement[ref]} to {deployment[environment]} {deployment_status[state]} in {repository[full_name]}',
+    'deployment of {deployment[ref]} to {deployment[environment]} {deployment_status[state]} in {repository[full_name]}',
     'fork':
     '{forkee[owner][login]} forked {forkee[name]}',
     'gollum':
