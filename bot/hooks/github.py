@@ -149,4 +149,6 @@ LESS_EVENT_DESCRIPTIONS = {
     '{comment[user][login]} {action} comment on pull #{pull_request[number]} in {repository[full_name]}',
     'release':
     '{release[author][login]} {action} {release[tag_name]} in {repository[full_name]}',
+    'repository':
+    '{sender[login]} {action} repository {repository[full_name]}',
 }
